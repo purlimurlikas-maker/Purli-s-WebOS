@@ -2,37 +2,79 @@
 
 <!DOCTYPE html>
 <html>
-  <div class="Div1">
+
   <head>
     <meta charset="UTF-8" />
-    <title>PurliWebOS</title>
+    <title>Tiana's PalaceOS</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body style="background-image: url('background image.jpg'); background-size: cover;">
+
+    <p class="timeelement" id="timeElement">Time</p>
+    <script>
+      function updateTime() {
+        var currentTime = new Date().toLocaleString();
+        var timeText = document.querySelector("#timeElement");
+        timeText.textContent = currentTime;
+      }
+
+      updateTime();
+      setInterval(updateTime, 1000);
+    </script>
     
-  
-    <h1>Welcome to PurliWebOS</h1>
+
+    <div style="display: flex;">
+        <p class="title" id="title">
+            Tiana's PalaceOS
+        </p> 
+    </div>
+
+    <div class="Div1" id="welcome">
+
+    
+
+    <h1>Welcome to Tiana's PalaceOS</h1>
+
+    <p class="introduction">This is a WebOS made about Tiana with a splash of Purli.</p>
 
     <nav>
       <a class="nav-button" href="https://github.com/purlimurlikas-maker">GitHub</a>
       <a class="nav-button" href="https://purlimurlikas-maker.github.io/purli-s-personal-website/#aboutwebsite">Purli's own website</a>
     </nav>
 
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/0JLv6iVbeiy4Dh2eIw6FKI?utm_source=generator&si=aa7d050baca4472e" width="96%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" ></iframe>
-  
-    <img class="Purli" src="24C18890-0029-4A70-B8CB-8BF33AD3C1AB_1_105_c.jpeg" alt="Purli" >
-
-  <img class="cat-image" src="4F2ECC3F-68AC-4420-94CE-D1F4827F810A_1_201_a.jpeg" alt="Purli's cat" >
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/0JLv6iVbeiy4Dh2eIw6FKI?utm_source=generator&si=aa7d050baca4472e" width="96%" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" ></iframe>
 
   <p class="Beyquote1">"Who run the world? Girls!" - Beyoncé Giselle Knowles-Carter</p>
-  <p class="Navyquote">"Get over being a sugar cookie, and keep moving forward." - Admiral William H. McRaven</p>
+  <p class="Tianaquote1">“If you do your best each and every day, good things are sure to come your way.” — Tiana</p>
+  <p class="Tianaquote2">“The only way to get what you want in this world is through hard work.” — Tiana</p>
 
-  <img class="vaiana-image" src="https://i.pinimg.com/736x/72/cb/8a/72cb8aba40e7c61620e62200dc53f707.jpg" alt="Vaiana" >
-  
+  <img class="tiana-work" src="https://i.pinimg.com/originals/4d/aa/83/4daa837af8dfb9d023610ba4f780a6bf.gif" alt="Tiana at work" >
+
 <img class="tiana-image" src="https://i.pinimg.com/1200x/a5/df/ec/a5dfec3199fe50d832854adeb670d4b6.jpg" alt="Tiana" >
+ 
+</div>
 
-  </body>
+
+  <div class="Div2" id="about">
+
+    <h2>About Tiana</h2>
+
+    <nav>
+      <a class="nav-button" href="https://princess.disney.com/tiana"> Princess Tiana</a>
+    </nav> 
+
+    <img class="tiana-image2" src="https://i.pinimg.com/originals/1e/b9/8c/1eb98c89449ba62458c8bb27e8e284d0.gif" alt="Tiana at work">
+
   </div>
 
+
+  
+  <script src="script.js"></script>
+  
+
+</body>
+ 
+
+ˇ
 </html>
 
