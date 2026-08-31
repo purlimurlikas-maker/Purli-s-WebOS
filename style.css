@@ -35,14 +35,34 @@ h2 { color: #002f4f; font-family: cursive; font-weight: 900; font-style: italic;
 nav { text-align: center; }
 .normal-text { color: #003559; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem); }
 
-.tiana-image { border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 200px; float: right; }
+.image-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 0;
+}
+
+.tiana-image,
+.tiana-image3 {
+  border: 3px solid rgb(7, 50, 34);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 220px;
+  height: auto;
+  margin: 0;
+  flex: 1 1 0;
+  max-width: 48%;
+}
+
 .tiana-work { border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 300px; float: left; }
 
 .Beyquote1 { border: 3px solid #7AC38F; background-color: #88E0D0; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 10px; width: 600px; float: left; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem) }
 .Tianaquote1 { border: 3px solid #7AC38F; background-color: #88E0D0; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 10px; width: 600px; float: left; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem) }
 .Tianaquote2 { border: 3px solid #7AC38F; background-color: #88E0D0; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 10px; width: 600px; float: right; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem) }
 
-.Div1 { border: 3px solid #7AC38F; background-color: #B1E9A3; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); width: 700px; height: 1150px; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem); padding: 15px; position: absolute; top: 140px; left: 50%; transform: translateX(-50%); justify-content: space-between; align-items: center; display: flex; flex-direction: column; }
+.Div1 { border: 3px solid #7AC38F; background-color: #B1E9A3; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); width: 700px; height: 1180px; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem); padding: 15px; position: absolute; top: 140px; left: 41%; transform: translateX(-50%); justify-content: space-between; display: flex; flex-direction: column; }
 
 .introduction { border: 3px solid #7AC38F; background-color: #88E0D0; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 10px; width: 680px; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem); }
 
@@ -50,9 +70,7 @@ nav { text-align: center; }
 
 .timeelement { position: absolute; top: 20px; left: 85%; transform: translateX(-50%); z-index: 2; color: #002f4f; font-weight: 900; font-style: italic; text-align: left; font-size: clamp(1rem, 4vw, 1.5rem); border: 3px solid #7AC38F; background-color:#C7EEFF; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); padding: 10px; margin: 0; }
 
-.Div2 { border: 3px solid #7AC38F; background-color: #B1E9A3; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); width: 300px; height: 350px; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem); padding: 0px; position: absolute; top: 140px; left: 50%; transform: translateX(-50%); justify-content: space-between; align-items: center; display: flex; flex-direction: column; }
+.Div2 { border: 3px solid #7AC38F; background-color: #B1E9A3; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); width: 300px; height: 350px; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem); padding: 0px; position: absolute; top: 300px; left: 87.5%; transform: translateX(-50%); justify-content: space-between; align-items: center; display: flex; flex-direction: column; }
 
 .tiana-image2 { border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 250px; float: left; }
 
-
- 
