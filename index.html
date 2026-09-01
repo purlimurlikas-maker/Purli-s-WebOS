@@ -10,6 +10,8 @@
   </head>
   <body style="background-image: url('background image.jpg'); background-size: cover;">
 
+    <div id="top">
+   
     <p class="timeelement" id="timeElement">Time</p>
     <script>
       function updateTime() {
@@ -29,11 +31,36 @@
         </p> 
     </div>
 
-    <div class="Div1" id="welcome">
+    <div id="TianaSPalaceApp"> 
+      <div class="tiana-app">
+      <img class="tiana-app-icon" draggable="false" src="https://i.pinimg.com/736x/b8/d1/37/b8d13798a0902ff0606b1a3b06df4bba.jpg">
+      <p class="app-name">Tiana's PalaceApp</p>
+    </div>
+    </div>
+
+    <div class="welcome-window" id="welcomeopen"> <p>Welcome window</p> </div>
+    <div class="about-window" id="aboutopen"> <p>About Tiana</p> </div>
+
+  </div>
+
+<div class="Div3" id="TianaSPalaceAppwindow">
+  <p class="closebutton" id="TianaSPalaceAppwindowclose"></p>
+   <h1>Tiana's famous recipes</h1>
+</div>
+
+
 
     
 
-    <h1>Welcome to Tiana's PalaceOS</h1>
+    <div class="Div1" id="welcome">
+
+     <p class="closebutton" id="welcomeclose"></p>
+
+      <p id="welcomeheader"> 
+         <img class="Ray" src="https://i.pinimg.com/736x/68/c6/d5/68c6d5e7ea75ac7d40eefdf627ef95e6.jpg" alt="Ray" title="Move Ray to move the window around the screen.">
+	</p>
+
+  <h1>Welcome to Tiana's PalaceOS</h1>
 
     <p class="introduction">This is a WebOS made about Tiana with a splash of Purli.</p>
 
@@ -59,6 +86,11 @@
 
   <div class="Div2" id="about">
 
+    <p id="aboutclose" class="closebutton" style="cursor:pointer"></p>
+  
+
+ <p id="aboutclose" style="cursor:pointer"></p>
+
     <h2>About Tiana</h2>
 
     <nav>
@@ -72,12 +104,10 @@
 
 
   
-  <script src="script.js"></script>
-  
+  <script src="./script.js" defer></script>
+
 
 </body>
- 
 
-ˇ
 </html>
 
