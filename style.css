@@ -6,6 +6,11 @@ body {
   position: relative;
 }
 
+#top {
+  position: relative;
+  z-index: 1000;
+}
+
 
 .nav-button {
   display: inline-block;
@@ -31,29 +36,22 @@ body {
 }
 
 h1 { color: #002f4f; font-family:cursive; font-weight: 900; font-style: italic; font-style: bold; text-align: center; font-size: 50px }
-h2 { color: #002f4f; font-family: cursive; font-weight: 900; font-style: italic; font-style: bold; text-align: justify; font-size: 35px }
+h2 { color: #002f4f; font-family: cursive; font-weight: 900; font-style: italic; font-style: bold; text-align: center; font-size: 35px }
 nav { text-align: center; }
 .normal-text { color: #003559; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem); }
 
-.image-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin: 10px 0;
-}
+
 
 .tiana-image,
 .tiana-image3 {
   border: 3px solid rgb(7, 50, 34);
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  width: 200px;
+  width: 260px;
   height: auto;
   margin: 0;
   flex: 1 1 0;
-  max-width: 40%;
+  max-width: 45%;
 }
 
 .tiana-work { border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 300px; float: left; }
@@ -62,15 +60,15 @@ nav { text-align: center; }
 .Tianaquote1 { border: 3px solid #7AC38F; background-color: #88E0D0; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 10px; width: 600px; float: left; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size:20px }
 .Tianaquote2 { border: 3px solid #7AC38F; background-color: #88E0D0; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 10px; width: 600px; float: right; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size:20px }
 
-.Div1 { border: 3px solid #7AC38F; background-color: #B1E9A3; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); width: 700px; height: 1450px; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: 20px; padding: 15px; position: absolute; top: 145px; left: 41%; transform: translateX(-50%); justify-content: space-between; display: flex; flex-direction: column; }
+.Div1 { border: 3px solid #7AC38F; background-color: #B1E9A3; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); width: 700px; height: 1450px; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: 20px; padding: 15px; position: absolute; top: 145px; left: 41%; transform: translateX(-50%); justify-content: space-between; display: flex; flex-direction: column; z-index: 0; }
 
 .introduction { border: 3px solid #7AC38F; background-color: #88E0D0; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 10px; width: 680px; font-family: 'Courier New', Courier, monospace; font-weight: 900; font-style: italic; text-align: justify; font-size: 20px; }
 
-.title { position: absolute; top: 10px; left: 35%; transform: translateX(-50%); z-index: 2; color: #002f4f; font-family: cursive; font-weight: 1000; font-style: italic; font-style:bold; text-align: center; font-size: clamp(1.5rem, 6vw, 4rem); border: 3px solid #7AC38F; background-color:#C7EEFF; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); padding: 15px; margin: 0; }
+.title { position: absolute; top: 10px; left: 35%; transform: translateX(-50%); z-index: 2; color: #002f4f; font-family: cursive; font-weight: 1000; font-style: italic; font-style:bold; text-align: center; font-size: 52px; border: 3px solid #7AC38F; background-color:#C7EEFF; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); padding: 15px; margin: 0; width:500px; height:80px}
 
 .timeelement { position: absolute; top: 20px; left: 90%; transform: translateX(-50%); z-index: 2; color: #002f4f; font-weight: 900; font-style: italic; text-align: left; font-size: clamp(1rem, 4vw, 1.5rem); border: 3px solid #7AC38F; background-color:#C7EEFF; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); padding: 10px; margin: 0; }
 
-.Div2 { border: 3px solid #7AC38F; background-color: #B1E9A3; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); width: 300px; height: 370px; font-weight: 900; font-style: italic; text-align: justify; font-size: 20px; padding: 0px; position: absolute; top: 300px; left: 87.5%; transform: translateX(-50%); justify-content: space-between; align-items: center; display: flex; flex-direction: column; }
+.Div2 { border: 3px solid #7AC38F; background-color: #B1E9A3; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); width: 300px; height: 370px; font-weight: 900; font-style: italic; text-align: justify; font-size: 20px; padding: 0px; position: absolute; top: 300px; left: 87.5%; transform: translateX(-50%); justify-content: space-between; align-items: center; display: flex; flex-direction: column; z-index: 1; }
 
 .tiana-image2 { border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 250px; float: left; }
 
@@ -85,16 +83,16 @@ nav { text-align: center; }
   box-shadow: 0 0 0 6px rgba(255,215,0,0.12);
 }
 
-#Tiana-s-PalaceApp {
+#TianaSPalaceApp {
   position: absolute;
-  top: 10px;
+  top: 85px;
   left: 20px;
   z-index: 3;
 }
 
 .tiana-app {
   position: absolute;
-  top: 0;
+  bottom: 10px;
   left: 0;
   cursor: grab;
   touch-action: none;
@@ -144,7 +142,7 @@ nav { text-align: center; }
 #welcomeopen {
   position: absolute;
   top: 5px;
-  right: 190px;
+  right: 25%;
   width: 140px;
   height: 50px;
   background-color: #B1E9A3;
@@ -166,7 +164,7 @@ nav { text-align: center; }
 #aboutopen {
   position: absolute;
   top: 72px;
-  right: 190px;
+  right: 25%;
   width: 140px;
   height: 45px;
   background-color: #B1E9A3;
@@ -185,8 +183,74 @@ nav { text-align: center; }
   font-size: 20px; 
 }
   
-.Div3 { border: 3px solid #7AC38F; background-color: #B1E9A3; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); width: 700px; height: 370px; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem); padding: 0px; position: absolute; top: 300px; left: 50%; transform: translateX(-50%); justify-content: space-between; align-items: center; display: flex; flex-direction: column; ; z-index: 5; }
+.Div3 { border: 3px solid #7AC38F; background-color: #B1E9A3; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); width: 800px; height: 2000px; font-weight: 900; font-style: italic; text-align: justify; font-size: clamp(1rem, 2vw, 1.5rem); padding: 0px; position: absolute; top: 300px; left: 50%; transform: translateX(-50%); justify-content: space-between; align-items: center; display: flex; flex-direction: column; z-index: 3; }
 
 #TianaSPalaceAppwindow {
-  display: none;
+  display: none; z-index: 4; position: absolute; top: 140px; left: 50%; transform: translateX(-50%); width: 800px; height: 2000px; background-color: #B1E9A3; border: 3px solid #7AC38F; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); padding: 20px; overflow-y: auto;
 }
+
+.window-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.recipe{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: #88E0D0;
+  border: 3px solid #7AC38F;
+  float:left
+}
+
+.beignets { float: left; border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 400px; max-width: 400px; min-height: 200px; height: auto; background-color: #C7EEFF; font-size: 20px; padding: 10px; white-space: normal; text-align: justify; }
+
+.instructions { border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 100%; background-color: #C7EEFF; font-size: 20px; padding: 15px;  }
+
+#beignetingr { float:right; border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 400px;  background-color: #C7EEFF; font-size: 20px; padding: 10px; }
+
+#beignetinstructions { float:left; border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 95%; background-color: #C7EEFF; font-size: 20px; padding: 10px; }
+
+#gumboingredients {
+  float: right;
+  border: 3px solid rgb(7, 50, 34);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  margin: 15px;
+  width: 600px;
+  max-width: 95%;
+  min-height: 200px;
+  height: auto;
+  background-color: #C7EEFF;
+  font-size: 20px;
+  padding: 10px;
+  white-space: normal;
+  overflow: auto;
+}
+
+#gumboinstructions {
+  float: left;
+  border: 3px solid rgb(7, 50, 34);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  margin: 15px;
+  width: 700px;
+  max-width: 95%;
+  min-height: 200px;
+  height: auto;
+  background-color: #C7EEFF;
+  font-size: 20px;
+  padding: 15px;
+  white-space: normal;
+  text-align: justify;
+}
+ 
+#gumboserves { float :left; border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 140px; max-width: 140px; min-height: 50px; height: auto; background-color: #C7EEFF; font-size: 20px; padding: 10px; white-space: normal; text-align: justify; }
+  
+#gumbo { float: left; border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 400px; max-width: 400px; min-height: 200px; height: auto; background-color: #C7EEFF; font-size: 20px; padding: 10px; white-space: normal; text-align: justify; }
+
+#gumbo-source { float: left; border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 600px; max-width: 95%; min-height: 50px; height: auto; background-color: #C7EEFF; font-size: 20px; padding: 10px; white-space: normal; text-align: justify; }
+
+#beignet-source { float: left; border: 3px solid rgb(7, 50, 34); border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin: 15px; width: 600px; max-width: 95%; min-height: 50px; height: auto; background-color: #C7EEFF; font-size: 20px; padding: 10px; white-space: normal; text-align: justify; }

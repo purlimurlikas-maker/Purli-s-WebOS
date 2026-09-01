@@ -1,10 +1,10 @@
 // Make the DIV elements draggable (only if they exist):
-['welcome', 'about', 'Tiana-s-PalaceApp', 'TianaSPalaceAppwindow', ].forEach(id => {
+['welcome', 'about', 'TianaSPalaceApp', 'TianaSPalaceAppwindow'].forEach(id => {
   const el = document.getElementById(id);
   if (el) dragElement(el);
 });
 
-
+let biggestIndex = 100;
 
 // Step 1: Define a function called `dragElement` that makes an HTML element draggable.
 function dragElement(element) {
@@ -59,12 +59,6 @@ function dragElement(element) {
 }
 
 var welcomeScreen = document.getElementById("welcome");
-function closeWindow(element) {
-  element.style.display = "none"
-}
-function openWindow(element) {
-  element.style.display = "flex"
-}
 var welcomeScreenClose = document.getElementById("welcomeclose");
 var welcomeScreenOpen = document.getElementById("welcomeopen");
 if (welcomeScreenClose && welcomeScreen) {
@@ -80,12 +74,6 @@ if (welcomeScreenOpen && welcomeScreen) {
 
 
 var aboutScreen = document.getElementById("about");
-function closeWindow(element) {
-  element.style.display = "none"
-}
-function openWindow(element) {
-  element.style.display = "flex"
-}
 var aboutScreenClose = document.getElementById("aboutclose");
 var aboutScreenOpen = document.getElementById("aboutopen");
 if (aboutScreenClose && aboutScreen) {
@@ -119,19 +107,23 @@ function deselectIcon(el) {
   if (selectedIcon === el) selectedIcon = undefined;
 }
 
-document.addEventListener("click", function (e) {
-  const iconImg = e.target.closest('.tiana-app-icon');
-  const appName = e.target.closest('.app-name');
-  let appContainer = null;
-  if (iconImg) appContainer = iconImg.parentElement;
-  else if (appName) appContainer = appName.parentElement;
-  else appContainer = e.target.closest('.tiana-app');
-  if (!appContainer) return;
-  if (selectedIcon === appContainer) deselectIcon(appContainer);
-  else { if (selectedIcon) deselectIcon(selectedIcon); selectIcon(appContainer); }
-});
+// Scope app icon clicks to the apps container to prevent interfering with other windows
+const appsContainer = document.getElementById('TianaSPalaceApp');
+if (appsContainer) {
+  appsContainer.addEventListener('click', function (e) {
+    const iconImg = e.target.closest('.tiana-app-icon');
+    const appName = e.target.closest('.app-name');
+    let appContainer = null;
+    if (iconImg) appContainer = iconImg.parentElement;
+    else if (appName) appContainer = appName.parentElement;
+    else appContainer = e.target.closest('.tiana-app');
+    if (!appContainer) return;
+    if (selectedIcon === appContainer) deselectIcon(appContainer);
+    else { if (selectedIcon) deselectIcon(selectedIcon); selectIcon(appContainer); }
+  });
+}
 
-const tianaSPalaceApp = document.getElementById("Tiana-s-PalaceApp");
+const tianaSPalaceApp = document.getElementById("TianaSPalaceApp");
 const tianaSPalaceAppClose = document.getElementById("TianaSPalaceAppclose");
 if (tianaSPalaceAppClose && tianaSPalaceApp && typeof closeWindow === 'function') {
   tianaSPalaceAppClose.addEventListener("click", () => closeWindow(tianaSPalaceApp));
@@ -139,12 +131,6 @@ if (tianaSPalaceAppClose && tianaSPalaceApp && typeof closeWindow === 'function'
 
  
 var TianaSPalaceAppwindow = document.getElementById("TianaSPalaceAppwindow");
-function closeWindow(element) {
-  element.style.display = "none"
-}
-function openWindow(element) {
-  element.style.display = "flex"
-}
 var TianaSPalaceAppwindowClose = document.getElementById("TianaSPalaceAppwindowclose");
 var TianaSPalaceAppwindowOpen = document.getElementById("TianaSPalaceAppwindowopen");
 if (TianaSPalaceAppwindowClose && TianaSPalaceAppwindow) {
@@ -158,38 +144,31 @@ if (TianaSPalaceAppwindowOpen && TianaSPalaceAppwindow) {
   });
 }
 
-
 function addWindowTapHandling(element) {
-  element.addEventListener("mousedown", () =>
-    handleWindowTap(element)
-  )
+  element.addEventListener("mousedown", () => handleWindowTap(element));
 }
 
+var topBar = document.querySelector("#top");
+
 function handleWindowTap(element) {
-  biggestIndex++;  // Increment biggestIndex by 1
+  biggestIndex++;
   element.style.zIndex = biggestIndex;
+  if (topBar) topBar.style.zIndex = biggestIndex + 1;
+  deselectIcon(selectedIcon);
 }
 
 function openWindow(element) {
+  if (!element) return;
+  if (getComputedStyle(element).display !== 'none') return;
   element.style.display = "flex";
-  biggestIndex++;  // Increment biggestIndex by 1
+  biggestIndex++;
   element.style.zIndex = biggestIndex;
+  if (topBar) topBar.style.zIndex = biggestIndex + 1;
 }
 
-var topBar = document.querySelector("#top")
-
-function openWindow(element) {
-  element.style.display = "flex";
-  biggestIndex++;  // Increment biggestIndex by 1
-  element.style.zIndex = biggestIndex;
-  topBar.style.zIndex = biggestIndex + 1;
-}
-
-function handleWindowTap(element) {
-  biggestIndex++;  // Increment biggestIndex by 1
-  element.style.zIndex = biggestIndex;
-  topBar.style.zIndex = biggestIndex + 1;
-  deselectIcon(selectedIcon)
+function closeWindow(element) {
+  if (!element) return;
+  element.style.display = "none";
 }
 
 var tianaAppWindow = document.getElementById("TianaSPalaceAppwindow");
@@ -197,7 +176,8 @@ var tianaAppIcon = document.getElementById("TianaSPalaceApp");
 var tianaAppClose = document.getElementById("TianaSPalaceAppwindowclose");
 
 if (tianaAppIcon && tianaAppWindow) {
-  tianaAppIcon.addEventListener("click", function() {
+  tianaAppIcon.addEventListener("click", function(e) {
+    e.stopPropagation();
     openWindow(tianaAppWindow);
   });
 }
@@ -207,3 +187,5 @@ if (tianaAppClose && tianaAppWindow) {
     closeWindow(tianaAppWindow);
   });
 }
+
+
