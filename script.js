@@ -1,191 +1,208 @@
-// Make the DIV elements draggable (only if they exist):
-['welcome', 'about', 'TianaSPalaceApp', 'TianaSPalaceAppwindow'].forEach(id => {
+['welcome', 'about', 'TianaSPalaceApp', 'TianaSPalaceAppwindow', 'SettingsAppwindow', 'SettingsApp'].forEach(id => {
   const el = document.getElementById(id);
   if (el) dragElement(el);
 });
 
 let biggestIndex = 100;
 
-// Step 1: Define a function called `dragElement` that makes an HTML element draggable.
-function dragElement(element) {
-  // Step 2: Set up variables to keep track of the element's position.
-  var initialX = 0;
-  var initialY = 0;
-  var currentX = 0;
-  var currentY = 0;
+function dragElement(el) {
+  let startX = 0, startY = 0, prevX = 0, prevY = 0;
+  if (!el) return;
 
-  // Step 3: Check if there is a special header element associated with the draggable element.
-  if (document.getElementById(element.id + "header")) {
-    // Step 4: If present, assign the `dragMouseDown` function to the header's `onmousedown` event.
-    // This allows you to drag the window around by its header.
-    document.getElementById(element.id + "header").onmousedown = startDragging;
-  } else {
-    // Step 5: If not present, assign the function directly to the draggable element's `onmousedown` event.
-    // This allows you to drag the window by holding down anywhere on the window.
-    element.onmousedown = startDragging;
-  }
-
-  // Step 6: Define the `startDragging` function to capture the initial mouse position and set up event listeners.
-  function startDragging(e) {
+  el.onmousedown = dragMouseDown;
+  function dragMouseDown(e) {
     e = e || window.event;
     e.preventDefault();
-    // Step 7: Get the mouse cursor position at startup.
-    initialX = e.clientX;
-    initialY = e.clientY;
-    // Step 8: Set up event listeners for mouse movement (`elementDrag`) and mouse button release (`closeDragElement`).
-    document.onmouseup = stopDragging;
+    prevX = e.clientX;
+    prevY = e.clientY;
+    document.onmouseup = closeDragElement;
     document.onmousemove = elementDrag;
   }
 
-  // Step 9: Define the `elementDrag` function to calculate the new position of the element based on mouse movement.
   function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
-    // Step 10: Calculate the new cursor position.
-    currentX = initialX - e.clientX;
-    currentY = initialY - e.clientY;
-    initialX = e.clientX;
-    initialY = e.clientY;
-    // Step 11: Update the element's new position by modifying its `top` and `left` CSS properties.
-    element.style.top = (element.offsetTop - currentY) + "px";
-    element.style.left = (element.offsetLeft - currentX) + "px";
+    startX = prevX - e.clientX;
+    startY = prevY - e.clientY;
+    prevX = e.clientX;
+    prevY = e.clientY;
+    el.style.top = (el.offsetTop - startY) + "px";
+    el.style.left = (el.offsetLeft - startX) + "px";
   }
 
-  // Step 12: Define the `stopDragging` function to stop tracking mouse movement by removing the event listeners.
-  function stopDragging() {
+  function closeDragElement() {
     document.onmouseup = null;
     document.onmousemove = null;
   }
 }
 
-var welcomeScreen = document.getElementById("welcome");
-var welcomeScreenClose = document.getElementById("welcomeclose");
-var welcomeScreenOpen = document.getElementById("welcomeopen");
-if (welcomeScreenClose && welcomeScreen) {
-  welcomeScreenClose.addEventListener("click", function() {
-    closeWindow(welcomeScreen);
-  });
-}
-if (welcomeScreenOpen && welcomeScreen) {
-  welcomeScreenOpen.addEventListener("click", function() {
-    openWindow(welcomeScreen);
-  });
-}
-
-
-var aboutScreen = document.getElementById("about");
-var aboutScreenClose = document.getElementById("aboutclose");
-var aboutScreenOpen = document.getElementById("aboutopen");
-if (aboutScreenClose && aboutScreen) {
-  aboutScreenClose.addEventListener("click", function() {
-    closeWindow(aboutScreen);
-  });
-}
-if (aboutScreenOpen && aboutScreen) {
-  aboutScreenOpen.addEventListener("click", function() {
-    openWindow(aboutScreen);
-  });
-}
-
-
-
-
-
-
-
-var selectedIcon;
-
-function selectIcon(el) {
-  if (!el) return;
-  el.classList.add("selected");
-  selectedIcon = el;
-}
-
-function deselectIcon(el) {
-  if (!el) return;
-  el.classList.remove("selected");
-  if (selectedIcon === el) selectedIcon = undefined;
-}
-
-// Scope app icon clicks to the apps container to prevent interfering with other windows
-const appsContainer = document.getElementById('TianaSPalaceApp');
-if (appsContainer) {
-  appsContainer.addEventListener('click', function (e) {
-    const iconImg = e.target.closest('.tiana-app-icon');
-    const appName = e.target.closest('.app-name');
-    let appContainer = null;
-    if (iconImg) appContainer = iconImg.parentElement;
-    else if (appName) appContainer = appName.parentElement;
-    else appContainer = e.target.closest('.tiana-app');
-    if (!appContainer) return;
-    if (selectedIcon === appContainer) deselectIcon(appContainer);
-    else { if (selectedIcon) deselectIcon(selectedIcon); selectIcon(appContainer); }
-  });
-}
-
-const tianaSPalaceApp = document.getElementById("TianaSPalaceApp");
-const tianaSPalaceAppClose = document.getElementById("TianaSPalaceAppclose");
-if (tianaSPalaceAppClose && tianaSPalaceApp && typeof closeWindow === 'function') {
-  tianaSPalaceAppClose.addEventListener("click", () => closeWindow(tianaSPalaceApp));
-}
-
- 
-var TianaSPalaceAppwindow = document.getElementById("TianaSPalaceAppwindow");
-var TianaSPalaceAppwindowClose = document.getElementById("TianaSPalaceAppwindowclose");
-var TianaSPalaceAppwindowOpen = document.getElementById("TianaSPalaceAppwindowopen");
-if (TianaSPalaceAppwindowClose && TianaSPalaceAppwindow) {
-  TianaSPalaceAppwindowClose.addEventListener("click", function() {
-    closeWindow(TianaSPalaceAppwindow);
-  });
-}
-if (TianaSPalaceAppwindowOpen && TianaSPalaceAppwindow) {
-  TianaSPalaceAppwindowOpen.addEventListener("click", function() {
-    openWindow(TianaSPalaceAppwindow);
-  });
-}
-
-function addWindowTapHandling(element) {
-  element.addEventListener("mousedown", () => handleWindowTap(element));
-}
-
-var topBar = document.querySelector("#top");
-
 function handleWindowTap(element) {
-  biggestIndex++;
-  element.style.zIndex = biggestIndex;
-  if (topBar) topBar.style.zIndex = biggestIndex + 1;
-  deselectIcon(selectedIcon);
-}
-
-function openWindow(element) {
   if (!element) return;
-  if (getComputedStyle(element).display !== 'none') return;
-  element.style.display = "flex";
   biggestIndex++;
   element.style.zIndex = biggestIndex;
+  const topBar = document.querySelector('#top');
   if (topBar) topBar.style.zIndex = biggestIndex + 1;
 }
 
-function closeWindow(element) {
-  if (!element) return;
-  element.style.display = "none";
+function openWindow(el) {
+  if (!el) return;
+  if (getComputedStyle(el).display !== 'none') return;
+  el.style.display = 'flex';
+  handleWindowTap(el);
 }
 
-var tianaAppWindow = document.getElementById("TianaSPalaceAppwindow");
-var tianaAppIcon = document.getElementById("TianaSPalaceApp");
-var tianaAppClose = document.getElementById("TianaSPalaceAppwindowclose");
+function closeWindow(el) {
+  if (!el) return;
+  el.style.display = 'none';
+}
 
-if (tianaAppIcon && tianaAppWindow) {
-  tianaAppIcon.addEventListener("click", function(e) {
-    e.stopPropagation();
-    openWindow(tianaAppWindow);
+function initializeWindow(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+}
+
+(function wireUI() {
+  const welcome = document.getElementById('welcome');
+  const welcomeOpen = document.getElementById('welcomeopen');
+  const welcomeClose = document.getElementById('welcomeclose');
+  if (welcomeOpen && welcome) welcomeOpen.addEventListener('click', () => openWindow(welcome));
+  if (welcomeClose && welcome) welcomeClose.addEventListener('click', () => closeWindow(welcome));
+
+  const about = document.getElementById('about');
+  const aboutOpen = document.getElementById('aboutopen');
+  const aboutClose = document.getElementById('aboutclose');
+  if (aboutOpen && about) aboutOpen.addEventListener('click', () => openWindow(about));
+  if (aboutClose && about) aboutClose.addEventListener('click', () => closeWindow(about));
+
+  const tianaIcon = document.getElementById('TianaSPalaceApp');
+  const tianaWindow = document.getElementById('TianaSPalaceAppwindow');
+  const tianaClose = document.getElementById('TianaSPalaceAppwindowclose');
+  if (tianaIcon && tianaWindow) tianaIcon.addEventListener('click', (e) => { e.stopPropagation(); openWindow(tianaWindow); });
+  if (tianaClose && tianaWindow) tianaClose.addEventListener('click', () => closeWindow(tianaWindow));
+
+  const settingsIcon = document.getElementById('SettingsApp');
+  const settingsWindow = document.getElementById('SettingsAppwindow');
+  const settingsClose = document.getElementById('SettingsAppwindowclose');
+  if (settingsIcon && settingsWindow) settingsIcon.addEventListener('click', (e) => { e.stopPropagation(); openWindow(settingsWindow); });
+  if (settingsClose && settingsWindow) settingsClose.addEventListener('click', () => closeWindow(settingsWindow));
+
+  let selectedIcon;
+  document.addEventListener('click', (e) => {
+    const appEl = e.target.closest('.tiana-app, .settings-app');
+    if (!appEl) return;
+    if (selectedIcon === appEl) {
+      appEl.classList.remove('selected');
+      selectedIcon = null;
+    } else {
+      if (selectedIcon) selectedIcon.classList.remove('selected');
+      appEl.classList.add('selected');
+      selectedIcon = appEl;
+    }
   });
-}
+})();
 
-if (tianaAppClose && tianaAppWindow) {
-  tianaAppClose.addEventListener("click", function() {
-    closeWindow(tianaAppWindow);
-  });
-}
+(function() {
+  const STORAGE_KEY = 'appBackground';
 
+  function applyBackground(bg) {
+    if (!bg) return;
+    if (bg.type === 'color') {
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundColor = bg.value || '';
+    } else if (bg.type === 'image') {
+      document.body.style.backgroundImage = `url('${bg.value}')`;
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center';
+    }
+  }
 
+  function saveBackground(bg) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(bg)); } catch (e) { console.warn('saveBackground failed', e); }
+  }
+
+  function loadBackground() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (e) { return null; }
+  }
+
+  const colorPicker = document.getElementById('bgColorPicker');
+  const imageUrlInput = document.getElementById('bgImageUrl');
+  const applyImageUrlBtn = document.getElementById('applyImageUrl');
+  const uploadInput = document.getElementById('bgUpload');
+  const resetBtn = document.getElementById('resetBackground');
+
+  const stored = loadBackground();
+  if (stored) applyBackground(stored);
+  if (colorPicker && stored && stored.type === 'color') colorPicker.value = stored.value;
+
+  if (colorPicker) {
+    colorPicker.addEventListener('input', (e) => {
+      const value = e.target.value;
+      applyBackground({ type: 'color', value });
+      saveBackground({ type: 'color', value });
+    });
+  }
+
+  if (applyImageUrlBtn && imageUrlInput) {
+    applyImageUrlBtn.addEventListener('click', () => {
+      const url = imageUrlInput.value.trim();
+      if (!url) return;
+      applyBackground({ type: 'image', value: url });
+      saveBackground({ type: 'image', value: url });
+    });
+  }
+
+  if (uploadInput) {
+    uploadInput.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const dataUrl = evt.target.result;
+        applyBackground({ type: 'image', value: dataUrl });
+        saveBackground({ type: 'image', value: dataUrl });
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      localStorage.removeItem(STORAGE_KEY);
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundColor = '';
+      if (colorPicker) colorPicker.value = '#ffffff';
+      if (imageUrlInput) imageUrlInput.value = '';
+      if (uploadInput) uploadInput.value = '';
+      document.querySelectorAll('.wallpaper-thumb').forEach(b => b.classList.remove('selected'));
+    });
+  }
+
+  function initWallpaperThumbs() {
+    const thumbs = Array.from(document.querySelectorAll('.wallpaper-thumb'));
+    if (!thumbs.length) return;
+    thumbs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-url') || btn.dataset.url;
+        if (!url) return;
+        thumbs.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        applyBackground({ type: 'image', value: url });
+        saveBackground({ type: 'image', value: url });
+      });
+    });
+
+    if (stored && stored.type === 'image') {
+      thumbs.forEach(b => {
+        const u = b.getAttribute('data-url') || b.dataset.url;
+        if (u === stored.value) b.classList.add('selected');
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWallpaperThumbs);
+  } else {
+    initWallpaperThumbs();
+  }
+
+})();
